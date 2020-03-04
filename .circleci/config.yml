@@ -7,8 +7,12 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: circleci/php:7.1-node-browsers
+      - image: circleci/php:7.4.2-node-browsers
+#      - image: circleci/mysql:8.0
 
+#    environment:
+#      - DB_CONNECTION: sample
+#    working_directory: ~/ci-demo
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -51,6 +55,10 @@ jobs:
       # prepare the database
       - run: touch storage/testing.sqlite
       - run: php artisan migrate --env=testing --database=sqlite_testing --force
+
+      - run:
+          name: Run PHPUmit
+          command: venodr/bin/phpunit
 
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
