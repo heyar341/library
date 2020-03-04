@@ -52,7 +52,7 @@ jobs:
           paths:
             - node_modules
 
-      - run: php artisan migrate -y
+      - run: php artisan migrate
 
       - run:
           name: Run PHPUmit
