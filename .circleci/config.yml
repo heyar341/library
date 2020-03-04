@@ -56,4 +56,4 @@ jobs:
 
       - run:
           name: Run PHPUnit
-          command: vendor/bin/phpunit
+          command: vendor/bin/phpunit tests/Feature
