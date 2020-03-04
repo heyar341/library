@@ -37,7 +37,6 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run: touch storage/testing.sqlite
-      - run: php artisan migrate --env=testing --database=sqlite_testing --force
       - run: composer install -n --prefer-dist
 
       - save_cache:
@@ -53,6 +52,8 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}
           paths:
             - node_modules
+
+      - run: php artisan migrate
 
       - run:
           name: Run PHPUmit
