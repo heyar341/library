@@ -55,5 +55,5 @@ jobs:
       - run: php artisan migrate --force
 
       - run:
-          name: Run PHPUmit
-          command: venodr/bin/phpunit
+          name: Run PHPUnit
+          command: vendor/bin/phpunit
